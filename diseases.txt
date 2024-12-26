@@ -1,0 +1,60 @@
+Heart Attack, 0.9, 0.08, 0.01, 0.005, 0.005
+Stroke, 0.85, 0.1, 0.03, 0.015, 0.005
+Pneumonia, 0.2, 0.3, 0.3, 0.15, 0.05
+Sepsis, 0.75, 0.15, 0.05, 0.03, 0.02
+Appendicitis, 0.1, 0.4, 0.3, 0.15, 0.05
+Fracture, 0.02, 0.2, 0.3, 0.3, 0.18
+Diabetic Ketoacidosis, 0.4, 0.35, 0.15, 0.05, 0.05
+Asthma Attack, 0.1, 0.25, 0.35, 0.2, 0.1
+Migraine, 0.01, 0.05, 0.1, 0.3, 0.54
+Food Poisoning, 0.05, 0.1, 0.4, 0.3, 0.15
+Urinary Tract Infection, 0.02, 0.1, 0.2, 0.4, 0.28
+Gastroenteritis, 0.03, 0.1, 0.3, 0.4, 0.17
+Common Cold, 0.0, 0.0, 0.1, 0.4, 0.5
+COVID-19 Severe, 0.7, 0.2, 0.08, 0.015, 0.005
+COVID-19 Mild, 0.02, 0.05, 0.15, 0.4, 0.38
+Anemia, 0.05, 0.1, 0.3, 0.4, 0.15
+Hypertension Crisis, 0.3, 0.4, 0.2, 0.07, 0.03
+Epileptic Seizure, 0.5, 0.3, 0.1, 0.06, 0.04
+Pancreatitis, 0.6, 0.3, 0.07, 0.02, 0.01
+Kidney Stones, 0.1, 0.2, 0.3, 0.3, 0.1
+Liver Cirrhosis, 0.4, 0.3, 0.2, 0.07, 0.03
+Cancer Pain, 0.2, 0.4, 0.3, 0.08, 0.02
+Burns Severe, 0.8, 0.15, 0.03, 0.015, 0.005
+Burns Minor, 0.01, 0.1, 0.2, 0.4, 0.29
+Snake Bite, 0.6, 0.3, 0.07, 0.02, 0.01
+Dog Bite, 0.02, 0.1, 0.2, 0.4, 0.28
+Allergic Reaction Severe, 0.7, 0.2, 0.08, 0.015, 0.005
+Allergic Reaction Mild, 0.01, 0.05, 0.1, 0.4, 0.44
+Heat Stroke, 0.4, 0.3, 0.2, 0.07, 0.03
+Hypothermia Severe, 0.75, 0.2, 0.04, 0.005, 0.005
+Hypothermia Mild, 0.01, 0.05, 0.1, 0.4, 0.44
+Chest Pain, 0.3, 0.4, 0.2, 0.07, 0.03
+Dizziness, 0.01, 0.05, 0.1, 0.4, 0.44
+Vertigo, 0.01, 0.05, 0.1, 0.4, 0.44
+Abdominal Pain Severe, 0.5, 0.3, 0.1, 0.06, 0.04
+Abdominal Pain Mild, 0.01, 0.05, 0.1, 0.4, 0.44
+Chronic Back Pain, 0.01, 0.05, 0.1, 0.4, 0.44
+Sciatica, 0.05, 0.1, 0.2, 0.4, 0.25
+Sprain, 0.0, 0.02, 0.1, 0.4, 0.48
+Eye Infection, 0.0, 0.02, 0.1, 0.4, 0.48
+Ear Infection, 0.01, 0.05, 0.1, 0.4, 0.44
+Sinus Infection, 0.0, 0.02, 0.1, 0.4, 0.48
+Dental Pain, 0.0, 0.02, 0.1, 0.4, 0.48
+Tooth Abscess, 0.05, 0.1, 0.2, 0.4, 0.25
+Gallstones, 0.1, 0.3, 0.3, 0.2, 0.1
+Hernia Pain, 0.1, 0.3, 0.3, 0.2, 0.1
+Shingles, 0.05, 0.1, 0.2, 0.4, 0.25
+Chickenpox, 0.0, 0.02, 0.1, 0.4, 0.48
+Measles, 0.1, 0.3, 0.3, 0.2, 0.1
+Mumps, 0.0, 0.02, 0.1, 0.4, 0.48
+Tuberculosis, 0.3, 0.4, 0.2, 0.07, 0.03
+Malaria, 0.2, 0.3, 0.3, 0.15, 0.05
+Dengue Fever, 0.3, 0.4, 0.2, 0.07, 0.03
+Typhoid, 0.2, 0.3, 0.3, 0.15, 0.05
+HIV/AIDS Complication, 0.7, 0.2, 0.08, 0.015, 0.005
+Alzheimer's Agitation, 0.1, 0.2, 0.3, 0.3, 0.1
+Parkinson's Crisis, 0.3, 0.4, 0.2, 0.07, 0.03
+Multiple Sclerosis Flare, 0.3, 0.4, 0.2, 0.07, 0.03
+Brain Tumor Symptoms, 0.7, 0.2, 0.08, 0.015, 0.005
+Seizure Uncontrolled, 0.6, 0.3, 0.07, 0.02, 0.01
