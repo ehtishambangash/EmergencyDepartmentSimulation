@@ -1,148 +1,128 @@
-# Emergency Department Simulation
+# Emergency Department (ED) Simulation for Resource Management
 
-This project simulates the operations of an emergency department (ED) to optimize resource management and patient flow. It uses a combination of threads and resource allocation algorithms to handle tasks such as patient triage, bed and physician assignment, and resource deallocation.
+This project simulates the operations of a Hospital Emergency Department (ED) to optimize resource management, patient flow, and triage prioritization. It aims to improve hospital efficiency by modeling various aspects of ED operations, such as patient arrivals, medical conditions, resource allocation (beds, physicians, medical staff), and triage prioritization. The system includes probabilistic models to simulate patient arrival times, treatment durations, and the resource utilization.
 
----
+The project is built using Java and leverages concepts such as Object-Oriented Programming (OOP), multithreading, and probability distributions (Weibull, Pearson VI, Exponential) to model realistic ED operations.
 
-## **Features**
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Problem Statement](#problem-statement)
+3. [Project Objectives](#project-objectives)
+4. [Key Challenges Addressed](#key-challenges-addressed)
+5. [Implementation Details](#implementation-details)
+    1. [Main Classes](#main-classes)
+    2. [Thread Usage](#thread-usage)
+    3. [Data Representation](#data-representation)
+6. [Key Features](#key-features)
+7. [Challenges and Solutions](#challenges-and-solutions)
+8. [Flow of the Simulation](#flow-of-the-simulation)
+9. [Graphical User Interface (GUI)](#graphical-user-interface-gui)
+10. [Technologies Used](#technologies-used)
+11. [Results and Analysis](#results-and-analysis)
+12. [Conclusion](#conclusion)
+13. [Future Work](#future-work)
+14. [Contact Information](#contact-information)
 
-1. **Patient Arrival Simulation**:
-   - Arrival times are generated using a Weibull distribution.
-   - Patients are categorized into triage levels based on their conditions.
+## Introduction
+The Emergency Department (ED) is a crucial area in healthcare systems, requiring swift decision-making and efficient resource management. This project simulates various aspects of an ED, including patient arrivals, triage categorization, resource allocation (beds, physicians), and treatment, to improve the overall efficiency of ED operations. 
 
-2. **Resource Allocation**:
-   - Beds and physicians are allocated dynamically based on patient triage.
-   - Queue management ensures patients wait for available resources.
+### Simulation Overview
+The system models the arrival of patients, assigns them diseases, calculates their triage category, and allocates resources such as beds and physicians based on severity. It also tracks resource utilization and provides real-time statistics and visualizations to help optimize the ED's operations.
 
-3. **Resource Deallocation**:
-   - Beds and physicians are freed once a patient's treatment is complete.
-   - Queued patients are assigned resources as they become available.
+## Problem Statement
+The ED faces several challenges related to optimizing patient flow, reducing waiting times, and improving resource utilization. This simulation aims to address these challenges by modeling the interactions and workflows in the ED, focusing on key resources such as beds and physicians while considering patient triage, arrivals, and treatments.
 
-4. **Threaded Operations**:
-   - A global clock (`ClockThread`) manages time progression.
-   - A deallocation thread (`DeallocationThread`) handles bed and physician release.
+## Project Objectives
+- **Optimize Resource Management:** Ensure efficient use of beds, physicians, and other medical resources.
+- **Simulate Patient Flow:** Model patient arrivals, their conditions, and triage categories.
+- **Implement Probabilistic Models:** Use distributions such as Weibull, Pearson VI, and Exponential to simulate patient arrival times and severity.
+- **Create a Real-time Dashboard:** Visualize real-time data about patient arrivals, bed occupancy, and overall ED performance.
+- **Provide an Interactive GUI:** Allow users to monitor and control the simulation, adjust parameters, and visualize outcomes.
 
-5. **Logging and Visualization**:
-   - Detailed logs for patient arrivals, resource assignments, and discharges.
-   - Color-coded logs for better visualization of resource utilization.
+## Key Challenges Addressed
+1. **Overcrowding and Resource Constraints:** The simulation models the availability of resources such as beds and physicians to reduce overcrowding and improve patient care.
+2. **Dynamic and Variable Patient Flow:** The simulation handles varying patient conditions and arrival rates using probabilistic distributions.
+3. **Resource Utilization:** Tracks the utilization of beds and physicians to optimize allocation and reduce bottlenecks.
+4. **Priority-based Treatment:** Patients are triaged based on urgency, ensuring high-priority patients receive timely care.
+5. **Multitasking and Workflow:** Models multitasking behavior for physicians treating multiple patients simultaneously.
 
----
+## Implementation Details
 
-## **How It Works**
+### Main Classes
 
-### 1. **Simulation Initialization**
-The simulation starts with the following components:
-- **GlobalClock**: Tracks simulation time.
-- **WeibullDistribution**: Generates random patient arrival times.
-- **CalculateTriage**: Assigns a triage category to each patient.
-- **BedManager** and **PhysicianManager**: Manage resources (beds and physicians).
-- **QueueManager**: Handles waiting patients.
+- **BedManager Class:** Manages the allocation and deallocation of beds.
+- **ClockThread Class:** Simulates the global clock to progress the simulation time.
+- **DeallocationThread Class:** Manages the deallocation of resources such as beds and physicians after treatment.
+- **PhysicianManager Class:** Allocates physicians based on patient severity and triage category.
+- **QueueManager Class:** Manages the queue of patients waiting for treatment.
+- **StatisticsCollectorThread Class:** Collects and logs statistics for performance analysis.
 
-### 2. **Patient Arrival and Resource Allocation**
-- New patients arrive based on the Weibull distribution.
-- They are assigned a triage category and queued if no resources are available.
+### Thread Usage
+Threads are used throughout the simulation to handle tasks concurrently, such as updating the global clock, allocating resources, and collecting statistics. The **ClockThread** runs continuously, and the **DeallocationThread** ensures resources are freed up as patients are discharged.
 
-### 3. **Resource Deallocation**
-- The `DeallocationThread` runs in parallel to:
-  - Discharge patients whose treatment is complete.
-  - Reassign freed resources to queued patients.
+### Data Representation
+Simulation logs are saved to a text file (`emergency_department_log.txt`) that records each patient's interaction with the system, including arrival time, triage category, treatment duration, and discharge time. 
 
-### 4. **Thread Management**
-- Threads for the global clock and resource deallocation run concurrently with the main simulation.
-- Threads are interrupted and joined at the end of the simulation.
+## Key Features
+1. **Randomized Disease Assignment Based on Triage:** Diseases are assigned randomly to patients based on their triage category.
+2. **Object-Oriented Programming (OOP):** The simulation uses OOP principles for a modular and extensible design.
+3. **Extensibility:** The system allows easy addition of new triage categories and diseases.
+4. **Graphical/Console-Based Simulation Results:** Results can be visualized using graphs or exported for analysis.
+5. **Weibull, Pearson VI, and Exponential Distributions:** Used for modeling patient arrivals, treatment durations, and severity levels.
 
----
+## Challenges and Solutions
+- **Probability Distributions:** Used libraries like Apache Commons Math for generating probabilistic values.
+- **Debugging Simulation Logic:** Added extensive logging and used thread-safe structures.
+- **Resource Management:** Centralized resource management using priority queues and semaphores.
+- **Global Clock Synchronization:** Used a dedicated clock thread for time-based operations.
+- **Real-Time Data Fetching:** Employed separate threads for real-time data collection and visualization.
+- **Performance Optimization:** Optimized memory management and minimized shared resource use.
 
-## **Code Structure**
+## Flow of the Simulation
+1. **Initialization:** The ED environment is set up, and medical condition data is loaded.
+2. **Patient Arrival:** The **ClockThread** triggers patient arrivals based on a Weibull distribution.
+3. **Resource Allocation:** The **BedManager** allocates a bed based on the patient's triage category.
+4. **Patient Treatment and Deallocation:** Once treatment is complete, the **DeallocationThread** frees resources for new patients.
+5. **End of Simulation:** The simulation runs until the user decides to end it, with all relevant data logged.
 
-### **Main Components**
-| Class                  | Responsibility                                                                 |
-|------------------------|-------------------------------------------------------------------------------|
-| `Main`                | Orchestrates the entire simulation.                                           |
-| `GlobalClock`         | Manages simulation time.                                                      |
-| `ClockThread`         | Updates the global clock continuously.                                        |
-| `DeallocationThread`  | Handles resource deallocation and patient queue management.                   |
-| `Patient`             | Represents a patient, including attributes like triage, arrival, and discharge times. |
-| `BedManager`          | Allocates and deallocates beds for patients.                                   |
-| `PhysicianManager`    | Allocates and deallocates physicians for patients.                             |
-| `QueueManager`        | Manages the queue of patients waiting for resources.                          |
-| `CalculateTriage`     | Assigns triage categories based on patient conditions.                        |
-| `WeibullDistribution` | Generates arrival times for patients.                                         |
+## Graphical User Interface (GUI)
+The simulation features an interactive GUI with real-time statistics and graphical representations. 
 
-### **Key Threads**
-- **`ClockThread`**: Updates the simulation clock in real-time.
-- **`DeallocationThread`**: Monitors bed and physician availability, handles discharges, and reassigns resources.
+### Main Statistics Window
+- **Bed Statistics:** Displays the types of beds, number, and utilization rates.
+- **Physician Statistics:** Displays physician utilization.
+- **Progress Bars:** Visualizes the overall bed and physician utilization.
 
----
+### Graph Window
+Displays six different graphs, including:
+- **Triage Bar Graph**
+- **Patient Seen vs Not Seen Pie Chart**
+- **Number of People Waiting vs Time Line Graph**
+- **Utilization of Beds vs Time Line Graph**
+- **Utilization of Physicians vs Time Line Graph**
+- **Treatment Time Distribution**
 
-## **Setup and Usage**
+## Technologies Used
+- **JavaFX** for GUI development.
+- **Apache Commons Math** for probability distributions.
+- **Multithreading** for concurrent operations and real-time data collection.
 
-### **Requirements**
-- Java 8 or above.
-- Basic understanding of multi-threading in Java.
+## Results and Analysis
+The system provides real-time performance data, including resource utilization and treatment times, which can be analyzed for optimizing ED operations.
 
-### **Steps to Run**
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/your-repo/ed-simulation.git
-   cd ed-simulation
-   ```
-2. Compile the project:
-   ```bash
-   javac -d bin src/emergencyDepartment/*.java
-   ```
-3. Run the simulation:
-   ```bash
-   java -cp bin emergencyDepartment.Main
-   ```
+## Conclusion
+This simulation offers valuable insights into improving ED efficiency by optimizing resource allocation and patient flow. It can be extended for use in real-world applications or research into healthcare optimization.
 
----
+## Future Work
+Future enhancements may include:
+- Integration with real-time hospital data.
+- Extending the simulation to include additional departments.
+- Implementing machine learning for predictive resource allocation.
 
-## **Example Output**
+## Contact Information
+If you have any questions, feedback, or suggestions, feel free to reach out to me:
 
-### **Sample Patient Log**
-```
-Patient ID: 1   Triage Category: 3   Arrival Gap: 12   Arrival Time: 12   Current Time: 12   Treatment Time: 30   Discharge Time: 42
-Allocated General Bed with ID: 1
-Allocated Physician with ID: 2
-----------------------------------------------------------------
-```
-
-### **Sample Discharge Log**
-```
-Patient ID: 1 has been discharged from Bed ID: 1
-----------------------------------------------------------------
-Allocated Bed ID: 2 to Patient ID: 5 at Time: 50
-Allocated Physician ID: 3 to Patient ID: 5
-```
-
----
-
-## **Customization**
-
-- **Simulation Time**:
-  Modify `start_time` and `end_time` in the `Main` class.
-
-- **Resource Configuration**:
-  Adjust the number of beds and physicians in the `BedManager` and `PhysicianManager` classes.
-
-- **Arrival Distribution**:
-  Change parameters in `WeibullDistribution` for different patient arrival patterns.
-
----
-
-## **Future Enhancements**
-- Implement additional triage levels and treatment types.
-- Add real-time graphical visualization of resource utilization.
-- Include patient priority for queue management.
-
----
-
-## **Contributors**
-- **Ehtisham Hussain**  
-  - Computer Engineering Student | Freelance Developer | Founder of Karzify
-
----
-
-## **License**
-This project is open-source and available under the MIT License.
+- **Name:** Ehtisham Hussain
+- **Email:** ehtishamhussain@example.com
+- **LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/ehtishamhussain)
+- **GitHub:** [GitHub Profile](https://github.com/ehtishamhussain)
