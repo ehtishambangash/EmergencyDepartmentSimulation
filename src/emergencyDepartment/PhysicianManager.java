@@ -5,56 +5,58 @@ import java.util.*;
 public class PhysicianManager {
     protected List<Physician> physicians;
 
-    public PhysicianManager() {
+    public PhysicianManager(int juniorResidents, int seniorResidents, int interns, int consultants, int registrars) {
         physicians = new ArrayList<>();
-        initializePhysicians();
+        initializePhysicians(juniorResidents, seniorResidents, interns, consultants, registrars);
     }
 
-    // Initialize physicians with IDs and roles
-    private void initializePhysicians() {
-        // Adding Junior Residents
-        for (int i = 0; i < 4; i++) {
+    // Initialize the physicians with IDs according to categories
+    private void initializePhysicians(int juniorResidents, int seniorResidents, int interns, int consultants, int registrars) {
+        // Adding Junior Residents (Category 1)
+        for (int i = 0; i < juniorResidents; i++) {
             physicians.add(new JuniorResident(i));
         }
 
-        // Adding Senior Residents
-        for (int i = 4; i < 8; i++) {
+        int seniorEnd = juniorResidents + seniorResidents;
+        // Adding Senior Residents (Category 2)
+        for (int i = juniorResidents; i < seniorEnd; i++) {
             physicians.add(new SeniorResident(i));
         }
 
-        // Adding Interns
-        for (int i = 8; i < 12; i++) {
+        int internEnd = seniorEnd + interns;
+        // Adding Interns (Category 3)
+        for (int i = seniorEnd; i < internEnd; i++) {
             physicians.add(new Intern(i));
         }
 
-        // Adding Consultants
-        for (int i = 12; i < 20; i++) {
+        int consultantEnd = internEnd + consultants;
+        // Adding Consultants (Category 4)
+        for (int i = internEnd; i < consultantEnd; i++) {
             physicians.add(new Consultant(i));
         }
 
-        // Adding Registrars
-        for (int i = 20; i < 24; i++) {
+        int registrarEnd = consultantEnd + registrars;
+        // Adding Registrars (Category 5)
+        for (int i = consultantEnd; i < registrarEnd; i++) {
             physicians.add(new Registrar(i));
         }
     }
 
 
-    // Allocate a physician based on triage category
+
     public Physician allocatePhysician(int triageCategory) {
         for (Physician physician : physicians) {
             if (physician.canTreatPatient(triageCategory) && physician.addPatient()) {
                 return physician;
             }
         }
-        return null; // No suitable physician available
+        return null;
     }
 
-    // Deallocate a physician after treatment
     public void deallocatePhysician(Physician physician) {
         physician.removePatient();
     }
 
-    // Get all physicians
     public List<Physician> getPhysicians() {
         return physicians;
     }
@@ -63,7 +65,6 @@ public class PhysicianManager {
         return physicians.size();
     }
 
-    // Print all physicians (for debugging purposes)
     public void printPhysicians() {
         for (Physician physician : physicians) {
             System.out.println("Physician ID: " + physician.getId() + ", Type: " + physician.getType() + 

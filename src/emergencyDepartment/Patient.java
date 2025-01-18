@@ -11,6 +11,9 @@ public class Patient {
     protected Bed assignedBed;
     protected Physician assignedPhysician;
     private boolean physicianAssigned;
+    private boolean addmitted;
+    private double pddt;
+    
 
     public Patient(int id, int triageCategory, int arrivalTime) {
     	
@@ -28,7 +31,23 @@ public class Patient {
         assignedPhysician = null;
         assignedBed = null;
     }
+    
+    public boolean getAdmissionStatus() {
+        return addmitted;
+    }
 
+    public void getAdmissionStatus(boolean addmitted) {
+        this.addmitted = addmitted;
+    }
+
+    public double getPddt() {
+        return pddt;
+    }
+
+    public void setPddt(double pddt) {
+        this.pddt = pddt;
+    }
+    
     public int getId() {
         return id;
     }

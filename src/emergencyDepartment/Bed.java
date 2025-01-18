@@ -1,23 +1,35 @@
 package emergencyDepartment;
 
 public abstract class Bed {
-    private int id;           // Unique identifier for the bed (0 to 23)
-    private String type;      // Type of bed (e.g., Resuscitation, Acute, etc.)
-    private boolean isAvailable; // Availability of the bed
+    private int id;           
+    private String type;      // Type of bed
+    private boolean isAvailable; 
+    protected Patient assignedPatient;
+    protected boolean firstAssign = false; 
 
     public Bed(int id, String type) {
         this.id = id;
         this.type = type;
-        this.isAvailable = true; // Initially, the bed is available
+        this.isAvailable = true;
     }
 
     // Getters and setters
     public int getId() {
         return id;
     }
+    
+    public void firstAssign() {
+    	firstAssign=true;
+    }
 
     public String getType() {
         return type;
+    }
+    public Patient getPatient() {
+        return assignedPatient;
+    }
+    public void assignPatient(Patient patient) {
+    	assignedPatient = patient;
     }
 
     public boolean isAvailable() {

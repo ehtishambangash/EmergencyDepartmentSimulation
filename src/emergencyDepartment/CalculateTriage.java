@@ -9,6 +9,7 @@ public class CalculateTriage {
     private final List<String> diseases;
     private final Map<String, double[]> probabilities;
     private final Random random;
+    protected String Disease;
 
     public CalculateTriage(String fileName) {
         diseases = new ArrayList<>();
@@ -34,14 +35,19 @@ public class CalculateTriage {
             throw new RuntimeException("Error reading the diseases file: " + e.getMessage());
         }
     }
+    
+    public String DiseaseGetter() {
+    	return Disease;
+    }
 
 
     public int triageCal() {
         int randomIndex = random.nextInt(diseases.size());
         String disease = diseases.get(randomIndex);
+        Disease = disease;
         
         double[] probs = probabilities.get(disease);
-        double randomValue = random.nextDouble(); // Generate random value between 0 and 1
+        double randomValue = random.nextDouble();
 
         double cumulative = 0.0;
         for (int i = 0; i < probs.length; i++) {

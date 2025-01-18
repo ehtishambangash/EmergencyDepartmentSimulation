@@ -2,7 +2,7 @@ package emergencyDepartment;
 
 public class Consultant extends Physician {
     public Consultant(int id) {
-        super(id, "Consultant", 4); // Consultants can treat up to 4 patients
+        super(id, "Consultant", 4);
     }
 
     @Override

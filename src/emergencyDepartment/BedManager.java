@@ -5,55 +5,58 @@ import java.util.*;
 public class BedManager {
     protected List<Bed> beds;
 
-    public BedManager() {
+    public BedManager(int RBeds,int ABeds,int SBeds,int MBeds,int OBeds,int OChairs) {
         beds = new ArrayList<>();
-        initializeBeds();
+        initializeBeds(RBeds,ABeds,SBeds,MBeds,OBeds,OChairs);
     }
 
-    // Initialize the beds with IDs from 0 to 23
-    private void initializeBeds() {
+    // Initialize the beds
+    private void initializeBeds(int RBeds,int ABeds,int SBeds,int MBeds,int OBeds,int OChairs) {
         // Adding Resuscitation Beds (only Category 1)
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < RBeds; i++) {
             beds.add(new ResuscitationBed(i));
         }
-
+        
+        int AcuteEnd = RBeds + ABeds;
         // Adding Acute Beds (Category 2-5)
-        for (int i = 2; i < 10; i++) {
+        for (int i = RBeds; i < AcuteEnd; i++) {
             beds.add(new AcuteBed(i));
         }
-
+        int SubAcuteEnd = AcuteEnd + SBeds;
         // Adding Subacute Beds (Category 3-5)
-        for (int i = 10; i < 15; i++) {
+        for (int i = AcuteEnd; i <SubAcuteEnd ; i++) {
             beds.add(new SubacuteBed(i));
         }
-
+        int MinorProcedureEnd = SubAcuteEnd + MBeds;
         // Adding Minor Procedure Rooms (Category 2-5)
-        for (int i = 15; i < 18; i++) {
+        for (int i = SubAcuteEnd; i < MinorProcedureEnd; i++) {
             beds.add(new MinorProcedureRoom(i));
         }
-        for (int i = 18; i < 25; i++) {
+        int OBedsEnd = MinorProcedureEnd + OBeds;
+        for (int i = MinorProcedureEnd; i < OBedsEnd; i++) {
             beds.add(new OverflowBed(i));
         }
-        for (int i = 25; i < 31; i++) {
+        int OChairsEnd = OBedsEnd + OChairs;
+        for (int i = OBedsEnd; i < OChairsEnd; i++) {
             beds.add(new OverflowChair(i));
         }
         
     }
 
-    // Allocate a bed based on the patient's triage category
+
     public Bed allocateBed(int triageCategory) {
         for (Bed bed : beds) {
             if (bed.isAvailable() && bed.canAccommodatePatient(triageCategory)) {
-                bed.setAvailable(false); // Mark the bed as allocated
+                bed.setAvailable(false);
                 return bed;
             }
         }
-        return null; // No suitable bed available
+        return null;
     }
 
     // Deallocate a bed
     public void deallocateBed(Bed bed) {
-        bed.setAvailable(true); // Mark the bed as available
+        bed.setAvailable(true);
     }
 
     // Get all beds
@@ -65,7 +68,6 @@ public class BedManager {
         return beds.size();
     }
 
-    // Print all beds (for debugging purposes)
     public void printBeds() {
         for (Bed bed : beds) {
             System.out.println("Bed ID: " + bed.getId() + ", Type: " + bed.getType() + ", Available: " + bed.isAvailable());

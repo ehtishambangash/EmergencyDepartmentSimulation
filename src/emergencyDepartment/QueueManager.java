@@ -3,7 +3,7 @@ package emergencyDepartment;
 import java.util.*;
 
 class QueueManager {
-    private PriorityQueue<Patient> queue;
+    private  PriorityQueue<Patient> queue;
 
     public QueueManager() {
         this.queue = new PriorityQueue<>(new Comparator<Patient>() {
@@ -19,26 +19,22 @@ class QueueManager {
         });
     }
 
-    // Add a new patient to the queue and automatically sort
     public void addPatient(Patient patient) {
         queue.add(patient);
     }
 
-    // Remove and return the next patient based on triage level and arrival time
     public Patient removePatient() {
-        return queue.poll();  // Removes and returns the highest priority patient
+        return queue.poll(); 
     }
 
     public Patient getNextPatient() {
-        return queue.peek();  // Returns the highest priority patient without removal
+        return queue.peek(); 
     }
 
-    // Check the current size of the queue
     public int getQueueSize() {
         return queue.size();
     }
 
-    // Check if the queue is empty
     public boolean isQueueEmpty() {
         return queue.isEmpty();
     }

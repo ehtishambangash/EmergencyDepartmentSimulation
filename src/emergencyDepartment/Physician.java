@@ -1,8 +1,8 @@
 package emergencyDepartment;
 
 public abstract class Physician {
-    private int id;           // Unique identifier for the physician
-    private String type;      // Type of physician (Consultant, Registrar, etc.)
+    private int id;  
+    private String type;      // Type of physician
     private int maxPatients;  // Maximum number of patients a physician can handle simultaneously
     private int currentPatients; // Current number of patients being treated
 
@@ -30,7 +30,6 @@ public abstract class Physician {
         return currentPatients;
     }
 
-    // Method to add a patient if the physician can handle more
     public boolean addPatient() {
         if (currentPatients < maxPatients) {
             currentPatients++;
@@ -52,6 +51,5 @@ public abstract class Physician {
         }
     }
 
-    // Abstract method to check if the physician can treat a patient based on triage
     public abstract boolean canTreatPatient(int triageCategory);
 }

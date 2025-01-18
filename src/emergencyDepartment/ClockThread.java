@@ -10,9 +10,9 @@ public class ClockThread implements Runnable {
     @Override
     public void run() {
         try {
-            while (!Thread.currentThread().isInterrupted()) {  // Check if the thread is interrupted
-                Thread.sleep(10);  // Simulate 1 second passing
-                globalClock.incrementTime(1);  // Increment global time by 1 second
+            while (!Thread.currentThread().isInterrupted()) { 
+                Thread.sleep(10);  
+                globalClock.incrementTime(1);
                 //System.out.println("Clock Time - Current Time: " + globalClock.getCurrentTime());
             }
         } catch (InterruptedException e) {
